@@ -31,13 +31,13 @@ const handler = NextAuth({
       try {
         await connectToDB()
 
-        // Generate a valid and unique username based on email
+        // Generate username based on email
         const username = profile.email.split('@')[0].toLowerCase()
 
         // Check if user already exists
         const userExists = await User.findOne({ email: profile.email })
 
-        // If not, create a new document and save user in MongoDB
+        // Else create and save user in MongoDB
         if (!userExists) {
           await User.create({
             email: profile.email,
