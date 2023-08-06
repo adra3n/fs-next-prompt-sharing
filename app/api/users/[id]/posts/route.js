@@ -8,7 +8,7 @@ export const GET = async (request, { params }) => {
     const prompts = await Prompt.find({ creator: params.id }).populate(
       'creator'
     )
-
+    console.log(JSON.stringify(prompts))
     return new Response(JSON.stringify(prompts), { status: 200 })
   } catch (error) {
     return new Response('Failed to fetch prompts created by user', {
